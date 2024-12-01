@@ -2,20 +2,130 @@
   font-family: "Protest Revolution", serif;
   font-weight: 500;
   font-style: normal;
-  font-size: 40px;
+  font-size: 38px;
   color: #428b26;
 }
+
 .title {
-  
   font-family: "Merriweather", serif;
   font-weight: 400;
   font-style: normal;
   font-size: 24px;
   color: #0a2f3e;
-
 }
-.para {
+
+* {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 17px;
+  font-size: 18px;
   color: #00050e;
+}
+
+.companytitle {
+  font-family: "Faculty Glyphic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 45px;
+}
+
+.tagline {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-size: 20px;
+}
+.landingcontainer {
+  /* animation: landingcontaineranim 10s ease normal infinite;
+} */
+}
+.landingbox {
+}
+.overlay {
+  position: absolute;
+  bottom: 0%;
+  left: 0px;
+  background-color: rgb(187, 206, 166);
+  width: 100%;
+  transition: 1s ease;
+  height: 100%;
+  opacity: 0.95;
+  overflow: hidden;
+}
+
+.landingcontainer:hover .overlay {
+  top: 0%;
+  height: 0;
+}
+
+@keyframes landingcontaineranim {
+  0% {
+    background-image: linear-gradient(to top, #de8443, rgb(223, 155, 45));
+    opacity: 50%;
+  }
+  10% {
+    background-image: linear-gradient(
+      to top,
+      rgb(223, 155, 45),
+      rgb(231, 192, 63)
+    );
+  }
+  20% {
+    background-image: linear-gradient(
+      to top,
+      rgb(231, 192, 63),
+      rgb(229, 203, 86)
+    );
+  }
+  30% {
+    background-image: linear-gradient(
+      to top,
+      rgb(229, 203, 86),
+      rgb(208, 213, 48)
+    );
+  }
+  40% {
+    background-image: linear-gradient(
+      to top,
+      rgb(208, 213, 48),
+      rgb(182, 223, 45)
+    );
+  }
+  50% {
+    background-image: linear-gradient(
+      to top,
+      rgb(182, 223, 45),
+      rgb(149, 223, 45)
+    );
+  }
+  60% {
+    background-image: linear-gradient(
+      to top,
+      rgb(149, 223, 45),
+      rgb(182, 223, 45)
+    );
+  }
+  70% {
+    background-image: linear-gradient(
+      to top,
+      rgb(182, 223, 45),
+      rgb(208, 213, 48)
+    );
+  }
+  80% {
+    background-image: linear-gradient(
+      to top,
+      rgb(208, 213, 48),
+      rgb(229, 203, 86)
+    );
+  }
+  90% {
+    background-image: linear-gradient(
+      to top,
+      rgb(229, 203, 86),
+      rgb(231, 192, 63)
+    );
+  }
+  100% {
+    background-image: linear-gradient(to top, rgb(231, 192, 63), #e6975f);
+    opacity: 100%;
+  }
 }
