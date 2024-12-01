@@ -54,6 +54,7 @@
 .landingcontainer:hover .overlay {
   top: 0%;
   height: 0;
+  border-radius: 50px;
 }
 
 @keyframes landingcontaineranim {

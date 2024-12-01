@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import style from "../assets/css/App.module.css";
 import logo from "../assets/images/logo.png";
 import Animation from "./Animation";
@@ -49,11 +50,13 @@ function LandingPage() {
                   className="w-[80%] p-1 bg-transparent ml-2  text-[15px]"
                   placeholder="Password"
                 />
-                <input
-                  type="submit"
+                <Link
+                  to="/main"
                   name="loginID"
                   className=" px-2 mt-4 mb-2 border-slate-400 border-[1px] hover:rounded-2xl hover:bg-blue-400 "
-                />
+                >
+                  Submit
+                </Link>
               </fieldset>
             </form>
           </div>
