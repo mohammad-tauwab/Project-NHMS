@@ -1,9 +1,43 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import style from "../assets/css/App.module.css";
 import logo from "../assets/images/logo.png";
 import Animation from "./Animation";
+import { useState } from "react";
 
 function LandingPage() {
+  const [validuser, setValidUser] = useState(true);
+  const naviagte = useNavigate(); //defining this to diect to the main page when required.
+  const checkUserAuth = (event) => {
+    event.preventDefault();
+    let userObj = {
+      name: document.getElementById("username").value,
+      pwd: document.getElementById("userpwd").value,
+    };
+
+    //using fetch to get response from the server
+    fetch("http://localhost:7000/auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userObj),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        if (Object.keys(data).length != 0) {
+          naviagte("/main");
+        } else {
+          //naviagte("/");
+          setValidUser(false);
+        }
+      })
+      .catch((err) => console.error("Fetch error:", err));
+  };
+
   return (
     <>
       <div className="flex w-full container m-auto bg-white">
@@ -40,23 +74,39 @@ function LandingPage() {
                 <legend>Verify Your identity</legend>
                 <input
                   type="text"
-                  name="loginid"
+                  name="name"
                   placeholder="Login ID"
-                  className="w-[80%] p-1 bg-transparent ml-2 text-[15px] mt-2"
+                  className={`w-[80%] p-1 bg-transparent ml-2 text-[15px] mt-2 ${
+                    validuser ? "text-black" : "text-red-600"
+                  }`}
+                  id="username"
+                  required
                 />
                 <input
                   type="password"
                   name="pwd"
-                  className="w-[80%] p-1 bg-transparent ml-2  text-[15px]"
+                  className={`w-[80%] p-1 bg-transparent ml-2  text-[15px] ${
+                    validuser ? "text-black" : "text-red-600"
+                  }`}
                   placeholder="Password"
+                  id="userpwd"
+                  required
                 />
-                <Link
-                  to="/main"
+                <input
+                  type="submit"
                   name="loginID"
                   className=" px-2 mt-4 mb-2 border-slate-400 border-[1px] hover:rounded-2xl hover:bg-blue-400 "
+                  onClick={(event) => {
+                    checkUserAuth(event);
+                  }}
+                />
+                <span
+                  className={`mt-2 text-red-600 trext-[12px] ${
+                    validuser ? "hidden" : "block"
+                  }`}
                 >
-                  Submit
-                </Link>
+                  Invalid User - Check Credentials
+                </span>
               </fieldset>
             </form>
           </div>
