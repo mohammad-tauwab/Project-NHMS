@@ -30,5 +30,5 @@ the user to '/' else we will route to '/main'
 
 -------------------------------------UPDATE (2.2)---------------------------------------------------
 --> Display the received data in the main page so that it can be used in the Profiel Display [DONE]
---> Restrict the bypass of home to enter main
---> Design the page layout : Add header, Footer , Sidebar and Body.
+--> Restrict the bypass of home to enter main [DONE]
+--> Design the page layout : Add header [done]
