@@ -15,7 +15,7 @@ DAY-01: (1.1) (Day1 : Update1)
     viii. Whats App Number
 
 
--------Landing Page-------- (1.1)
+-------Landing Page-------- (Component-01)
 From the landing page we have added a express.Router and have modified the main file to handle the Router
 --> At home '/' we are rendering the landing page and when submit button is clicked we will route it to '/main' using 
 the router link element
@@ -27,3 +27,8 @@ the user to '/' else we will route to '/main'
 
 -------------------------------------UPADTE (2.1)--------------------------------------------------------
 --> Changed the landing page to add an error message.
+
+-------------------------------------UPDATE (2.2)---------------------------------------------------
+--> Display the received data in the main page so that it can be used in the Profiel Display [DONE]
+--> Restrict the bypass of home to enter main
+--> Design the page layout : Add header, Footer , Sidebar and Body.

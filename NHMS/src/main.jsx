@@ -5,11 +5,14 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./components/App";
 import "./assets/css/tailwindstyle.css";
 import MainHome from "./components/MainHome";
+import { getAuthUserDetails} from "./components/LandingPage";
 
 const routes = [
   { path: "/", element: <App /> },
-  { path: "/main", element: <MainHome /> },
+  //if user has clickde login then only go to mainPAge
+  { path: "/main", element :<MainHome/>, loader : getAuthUserDetails, },
 ];
+
 const router = createBrowserRouter(routes);
 
 createRoot(document.getElementById("root")).render(

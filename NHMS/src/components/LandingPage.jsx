@@ -4,17 +4,20 @@ import logo from "../assets/images/logo.png";
 import Animation from "./Animation";
 import { useState } from "react";
 
+
+let authUserDetails ={} // defining an empty obejct to store the relevant data of authenticated user
 function LandingPage() {
-  const [validuser, setValidUser] = useState(true);
+  const [validuser, setValidUser] = useState(true); //storing the state to show the error message once the authentication failed.
   const naviagte = useNavigate(); //defining this to diect to the main page when required.
   const checkUserAuth = (event) => {
     event.preventDefault();
+    //getting the details filled in by the user
     let userObj = {
       name: document.getElementById("username").value,
       pwd: document.getElementById("userpwd").value,
     };
 
-    //using fetch to get response from the server
+    //using fetch to pas the data object above extracted for auuthentication from database
     fetch("http://localhost:7000/auth", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -27,11 +30,12 @@ function LandingPage() {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        // if server responded with some data it means the user is authenticated.
+        //Storing the data returned from the server in authUserDetail so as to pass to the loader
         if (Object.keys(data).length != 0) {
+          authUserDetails = data;
           naviagte("/main");
         } else {
-          //naviagte("/");
           setValidUser(false);
         }
       })
@@ -40,15 +44,15 @@ function LandingPage() {
 
   return (
     <>
-      <div className="flex w-full container m-auto bg-white">
+      <div className="flex w-full container m-auto bg-white align-middle">
         <div className="hidden md:block">
           <Animation></Animation>
         </div>
-        <div className={`w-full h-full relative mx-0 text-center overlay`}>
+        <div className={`w-full h-full relative mx-0 text-center overlay align-middle md:mt-[65px]` }>
           <div
             className={`border-2 ${style.landingcontainer} border-black w-[400px] h-[500px] absolute
             top-[50%] left-[50%] -translate-x-[50%] translate-y-[10%]
-            md:translate-x-0 md:top-[10%] md:left-[55%] 
+            md:translate-x-0 md:top-[10%] md:left-[55%]
             hover:rounded-[50px] hover:bg-white hover:shadow-xl hover:shadow-black text-center
             p-3`}
             id="overlay"
@@ -94,7 +98,7 @@ function LandingPage() {
                 />
                 <input
                   type="submit"
-                  name="loginID"
+                  name="loginid"
                   className=" px-2 mt-4 mb-2 border-slate-400 border-[1px] hover:rounded-2xl hover:bg-blue-400 "
                   onClick={(event) => {
                     checkUserAuth(event);
@@ -122,3 +126,8 @@ function LandingPage() {
   );
 }
 export default LandingPage;
+
+export function getAuthUserDetails(){ // defining the fucntioin to be passed to the loader, so that it could return the authUSerDetails to the called components
+  //and its children
+  return authUserDetails;
+}

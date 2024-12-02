@@ -646,6 +646,10 @@ video {
   margin-top: 1rem;
 }
 
+.mt-\[60px\] {
+  margin-top: 60px;
+}
+
 .block {
   display: block;
 }
@@ -749,6 +753,10 @@ video {
   text-align: center;
 }
 
+.align-middle {
+  vertical-align: middle;
+}
+
 .text-\[15px\] {
   font-size: 15px;
 }
@@ -803,6 +811,10 @@ video {
 
   .md\:top-\[10\%\] {
     top: 10%;
+  }
+
+  .md\:mt-\[65px\] {
+    margin-top: 65px;
   }
 
   .md\:block {
