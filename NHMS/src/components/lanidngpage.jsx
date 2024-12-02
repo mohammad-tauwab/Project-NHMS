@@ -6,6 +6,7 @@ import { useState } from "react";
 
 
 let authUserDetails ={} // defining an empty obejct to store the relevant data of authenticated user
+let username="";
 function LandingPage() {
   const [validuser, setValidUser] = useState(true); //storing the state to show the error message once the authentication failed.
   const naviagte = useNavigate(); //defining this to diect to the main page when required.
@@ -16,7 +17,7 @@ function LandingPage() {
       name: document.getElementById("username").value,
       pwd: document.getElementById("userpwd").value,
     };
-
+    username=document.getElementById("username").value;
     //using fetch to pas the data object above extracted for auuthentication from database
     fetch("http://localhost:7000/auth", {
       method: "POST",
@@ -129,5 +130,6 @@ export default LandingPage;
 
 export function getAuthUserDetails(){ // defining the fucntioin to be passed to the loader, so that it could return the authUSerDetails to the called components
   //and its children
+  authUserDetails["name"]=username;
   return authUserDetails;
 }

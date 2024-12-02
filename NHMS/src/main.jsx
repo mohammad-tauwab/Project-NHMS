@@ -4,8 +4,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import App from "./components/App";
 import "./assets/css/tailwindstyle.css";
+import { getAuthUserDetails} from "./components/lanidngpage";
 import MainHome from "./components/MainHome";
-import { getAuthUserDetails} from "./components/LandingPage";
 
 const routes = [
   { path: "/", element: <App /> },

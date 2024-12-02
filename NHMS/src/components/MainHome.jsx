@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
-
 import App from "./App";
+import MainDashboard from "./MainDashboard";
+import Header from "./header";
+
 
 function MainHome() {
   const navigate = useNavigate();
@@ -22,10 +24,9 @@ function MainHome() {
   return (
     <>{Object.keys(authUserDetail).length == 0? <App/>:
        <div>
-        <h1>This is main home</h1>
-        <h2>{authUserDetail.role}</h2>
-        <h2>{authUserDetail.contact}</h2>
-      </div>
+        <Header currentUserDetail={authUserDetail}></Header>   
+       </div>
+      
     }
      
     </>
