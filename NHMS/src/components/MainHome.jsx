@@ -4,13 +4,17 @@ import App from "./App";
 import Header from "./header";
 import Sidebar from "./sidebar";
 import Admindashboard from "./admindashboard";
+import BackToTop from "./BackToTop";
 
 function MainHome() {
   const navigate = useNavigate();
   //const authUserDetail = useLoaderData(); // getting the data that we have passed to the loader of the router from the previous page
-  let  authUserDetail ={};
-  sessionStorage.getItem("currentUserDetails")? authUserDetail = JSON.parse(
-    sessionStorage.getItem("currentUserDetails")) : alert("Please Login!!")
+  let authUserDetail = {};
+  sessionStorage.getItem("currentUserDetails")
+    ? (authUserDetail = JSON.parse(
+        sessionStorage.getItem("currentUserDetails")
+      ))
+    : alert("Please Login!!");
   useEffect(() => {
     const handlePopState = (event) => {
       alert("Back button is disabled, Click Logout to return");
@@ -29,12 +33,13 @@ function MainHome() {
         <App />
       ) : (
         <div className="block">
-          <Header currentUserDetail={authUserDetail}>
-          </Header>
+          <Header currentUserDetail={authUserDetail}></Header>
           <div className="flex flex-row">
-              <Sidebar></Sidebar>
-              <Admindashboard></Admindashboard>
-            </div>
+            <Sidebar></Sidebar>
+            <Admindashboard>
+              <BackToTop></BackToTop>
+            </Admindashboard>
+          </div>
         </div>
       )}
     </>

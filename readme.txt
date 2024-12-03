@@ -38,3 +38,6 @@ and reading from it at realod so as to keep the user logged in while re-loading 
 B- Handling the logout function : -->clearing the currentUserDetails from session storage and navigate to home
 C- Adding the SideBar:: Side bar added and the buttons are rendered dynamically depending on the array passed to it
 Side bar added usibg the state we are changing the sidebar class to make it visible or invisible
+
+-------------------------------------ADD (3.2) -----------------------------------------------
+A- Adding different mdolues in a separate file and adding the admin module to the admin dashboard.
