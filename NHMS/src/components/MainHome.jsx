@@ -3,7 +3,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import App from "./App";
 import MainDashboard from "./MainDashboard";
 import Header from "./header";
-
+import Sidebar from "./sidebar";
 
 function MainHome() {
   const navigate = useNavigate();
@@ -24,7 +24,10 @@ function MainHome() {
   return (
     <>{Object.keys(authUserDetail).length == 0? <App/>:
        <div>
-        <Header currentUserDetail={authUserDetail}></Header>   
+        <Header currentUserDetail={authUserDetail}>
+        <Sidebar></Sidebar>
+        </Header>   
+        
        </div>
       
     }

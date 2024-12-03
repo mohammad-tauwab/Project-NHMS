@@ -33,5 +33,8 @@ the user to '/' else we will route to '/main'
 --> Restrict the bypass of home to enter main [DONE]
 --> Design the page layout : Add header [done]
 -------------------------------------UPDATE (3.1) -------------------------------------------
-We have handled the reload function by storing the crrent user detail in the session storage 
+A-We have handled the reload function by storing the crrent user detail in the session storage 
 and reading from it at realod so as to keep the user logged in while re-loading the page
+B- Handling the logout function : -->clearing the currentUserDetails from session storage and navigate to home
+C- Adding the SideBar:: Side bar added and the buttons are rendered dynamically depending on the array passed to it
+Side bar added usibg the state we are changing the sidebar class to make it visible or invisible
