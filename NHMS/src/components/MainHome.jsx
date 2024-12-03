@@ -7,8 +7,8 @@ import Header from "./header";
 
 function MainHome() {
   const navigate = useNavigate();
-  const authUserDetail = useLoaderData(); // getting the data that we have passed to the loader of the router from the previous page
-
+  //const authUserDetail = useLoaderData(); // getting the data that we have passed to the loader of the router from the previous page
+  const authUserDetail = JSON.parse(sessionStorage.getItem('currentUserDetails'));
   useEffect(() => {
     const handlePopState = (event) => {
       alert("Back button is disabled, Click Logout to return");

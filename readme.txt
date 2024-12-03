@@ -32,3 +32,6 @@ the user to '/' else we will route to '/main'
 --> Display the received data in the main page so that it can be used in the Profiel Display [DONE]
 --> Restrict the bypass of home to enter main [DONE]
 --> Design the page layout : Add header [done]
+-------------------------------------UPDATE (3.1) -------------------------------------------
+We have handled the reload function by storing the crrent user detail in the session storage 
+and reading from it at realod so as to keep the user logged in while re-loading the page

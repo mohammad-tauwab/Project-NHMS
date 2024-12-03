@@ -6,18 +6,17 @@ import { useState } from "react";
 
 
 let authUserDetails ={} // defining an empty obejct to store the relevant data of authenticated user
-let username="";
 function LandingPage() {
   const [validuser, setValidUser] = useState(true); //storing the state to show the error message once the authentication failed.
   const naviagte = useNavigate(); //defining this to diect to the main page when required.
-  const checkUserAuth = (event) => {
+  const checkUserAuth = (event, callback) => {
     event.preventDefault();
     //getting the details filled in by the user
     let userObj = {
       name: document.getElementById("username").value,
       pwd: document.getElementById("userpwd").value,
     };
-    username=document.getElementById("username").value;
+
     //using fetch to pas the data object above extracted for auuthentication from database
     fetch("http://localhost:7000/auth", {
       method: "POST",
@@ -35,6 +34,7 @@ function LandingPage() {
         //Storing the data returned from the server in authUserDetail so as to pass to the loader
         if (Object.keys(data).length != 0) {
           authUserDetails = data;
+          callback(data);
           naviagte("/main");
         } else {
           setValidUser(false);
@@ -102,7 +102,9 @@ function LandingPage() {
                   name="loginid"
                   className=" px-2 mt-4 mb-2 border-slate-400 border-[1px] hover:rounded-2xl hover:bg-blue-400 "
                   onClick={(event) => {
-                    checkUserAuth(event);
+                    checkUserAuth(event, (validUserDetail)=>{
+                      sessionStorage.setItem('currentUserDetails',JSON.stringify(validUserDetail))
+                    });
                   }}
                 />
                 <span
@@ -130,6 +132,5 @@ export default LandingPage;
 
 export function getAuthUserDetails(){ // defining the fucntioin to be passed to the loader, so that it could return the authUSerDetails to the called components
   //and its children
-  authUserDetails["name"]=username;
-  return authUserDetails;
+  return JSON.parse(sessionStorage.getItem('currentUserDetails'));
 }
