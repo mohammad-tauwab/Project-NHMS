@@ -15,12 +15,12 @@ function Sidebar({ menuItems = ["item1", "item2", "item3","item4"] }) {
   return (
     <div
       className={`border-r-[1px] border-slate-400 p-2 px-3
-    flex flex-col ms-2 justify-start  min-h-screen
-    ${expanded?('w-[150px] md:w-[250px]'):('w-[40px]')} relative`}
+    flex flex-col ms-2 justify-start  min-h-screen 
+    ${expanded?('w-[130px] md:w-[250px]'):('w-[40px]')} relative`}
     >
       <span className={`text-center mb-2 ${expanded?'visible':'invisible'}`}>Sidebar Menu</span>
       <hr />
-      <div className={`absolute left-[82%] md:left-[89%] top-[50%] w-8 h-8 cursor-pointer ${!expanded?'invisible':'visible'}`}>
+      <div className={`absolute left-[80%] md:left-[89%] top-[50%] w-8 h-8 cursor-pointer ${!expanded?'invisible':'visible'}`}>
         <img src={left} alt="right" onClick={()=>{
             setExpanded(false);
         }}/>
@@ -34,11 +34,10 @@ function Sidebar({ menuItems = ["item1", "item2", "item3","item4"] }) {
 
       <div className={`flex flex-col justify-start  ${expanded?'visible':'invisible'} `}>
         {menuItems.map((items,index)=>(
-                    <button className="content-start text-start p-1 mb-1 mt-1 hover:bg-blue-300 hover:rounded-[5px] hover:border-[1px] hover:border-blue cursor-pointer" key={index} style={index==clickedindex ?active:inactive} onClick={(e)=>{
+                    <input type="button" className="content-start text-start p-1 mb-1 mt-1 hover:bg-blue-300 hover:rounded-[5px] hover:border-[1px] hover:border-blue cursor-pointer" key={index} style={index==clickedindex ?active:inactive} onClick={(e)=>{
                         setClickedIndex(index);
-                    }}>
-                        {items}
-                    </button> 
+                    }} value={items}>
+                    </input> 
             ))}
       
       </div>

@@ -6,14 +6,14 @@ import user from '../assets/images/user.png'
 function Header ({currentUserDetail, children}){
    const navigate =  useNavigate();
 return(<>
-    <div className="w-full  border-[1px] border-slate-400 container rounded-xl p-2 px-3
+    <div className="w-full  border-[1px] border-slate-400 rounded-xl p-2 px-3
               flex flex-row m-auto justify-between 
               ">
         <div className="hidden md:block basis-2/12 content-center">
             <img src={logo} alt="LOGO" className="h-[100px] md:h-[110px] m-auto object-cover"/>
         </div>
         <div className=" md:visible basis-8/12 content-center">
-            <span className={`${style.companytitle}`}>COMPANY TITLE</span><br/>
+            <span className={`${style.companytitle}`}>RA PROJECT EZBC</span><br/>
             <span className={`${style.tagline}`}>This is the company sub title</span><br/>
             <span className={`${style.para} text-[15px]`}>The notice will be displayed here</span><br/>
         </div>
