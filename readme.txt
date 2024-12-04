@@ -41,3 +41,4 @@ Side bar added usibg the state we are changing the sidebar class to make it visi
 
 -------------------------------------ADD (3.2) -----------------------------------------------
 A- Adding different mdolues in a separate file and adding the admin module to the admin dashboard.
+B- Adding the functionality to the admin dashboard

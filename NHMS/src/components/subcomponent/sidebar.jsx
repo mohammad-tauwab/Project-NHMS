@@ -1,6 +1,6 @@
 import { useState } from "react";
-import left from "../assets/images/left.png";
-import menu from "../assets/images/menu.png";
+import left from "../../assets/images/left.png";
+import menu from "../../assets/images/menu.png";
 
 function Sidebar({ menuItems = ["item1", "item2", "item3", "item4"] }) {
   const active = {

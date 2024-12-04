@@ -1,5 +1,9 @@
-import { adminModules } from "../store/admimodules";
+
+import { useNavigate } from "react-router-dom";
+import { adminModules } from "../../store/admimodules";
+
 function Admindashboard(props) {
+  const navigate = useNavigate();
   return (
     <div className="w-full p-3 m-1 rounded-tr-lg bg-slate-200">
       <div className="grid grid-cols-1 md:grid-cols-4 w-full p-2 overflow-hidden  m-auto self-center md:mt-[50px]">
@@ -21,6 +25,16 @@ function Admindashboard(props) {
                 type="button"
                 value={module.buttonname}
                 className="px-1 cursor-pointer"
+                onClick={(e)=>{
+                  switch (e.target.value) {
+                    case 'Add User':
+                      navigate('/admin/adduser')
+                      break;
+                  
+                    default:
+                      break;
+                  }
+                }}
               />
             </div>
           </div>

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-import style from '../assets/css/App.module.css'
-import logo from '../assets/images/logo.png'
-import user from '../assets/images/user.png'
+import style from '../../assets/css/App.module.css'
+import logo from '../../assets/images/logo.png'
+import user from '../../assets/images/user.png'
 
 function Header ({currentUserDetail, children}){
    const navigate =  useNavigate();

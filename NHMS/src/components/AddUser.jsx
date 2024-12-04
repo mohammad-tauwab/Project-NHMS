@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import App from "./App";
 import Header from "./subcomponent/header";
 import Sidebar from "./subcomponent/sidebar";
-import Admindashboard from "./Dashboard/admindashboard";
-import BackToTop from "./subcomponent//BackToTop";
+import BackToTop from "./subcomponent/BackToTop";
+import AddUserDashboard from "./Dashboard/adduserdashboard";
 
-function MainHome() {
+
+
+function AddUser() {
   const navigate = useNavigate();
   //const authUserDetail = useLoaderData(); // getting the data that we have passed to the loader of the router from the previous page
   let authUserDetail = {};
@@ -17,7 +19,6 @@ function MainHome() {
     : alert("Please Login!!");
   useEffect(() => {
     const handlePopState = (event) => {
-      alert("Back button is disabled, Click Logout to return");
       navigate("/main");
     };
 
@@ -36,13 +37,13 @@ function MainHome() {
           <Header currentUserDetail={authUserDetail}></Header>
           <div className="flex flex-row">
             <Sidebar></Sidebar>
-            <Admindashboard>
+            <AddUserDashboard>
               <BackToTop></BackToTop>
-            </Admindashboard>
+            </AddUserDashboard>
           </div>
         </div>
       )}
     </>
   );
 }
-export default MainHome;
+export default AddUser;
