@@ -1,0 +1,7 @@
+.input{
+    width: 100%;
+    text-wrap: wrap;
+    text-overflow: ellipsis;
+    background-color: azure;
+    color: black;
+}

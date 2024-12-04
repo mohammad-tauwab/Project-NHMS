@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header</title>
+    <link rel="stylesheet" href="../assets//css/tailwindstyle.css">
+</head>
+
+<body class="bg-red-100">
+    <div class="w-full  border-2 border-black container rounded-xl p-2 px-3
+              flex flex-row m-auto justify-around
+              ">
+        <div class="border-2 border-lime-300 hidden md:block basis-2/12 content-center">
+            <img src="../assets/images/logo.png" alt="LOGO" class="h-[100px] md:h-[110px] m-auto object-cover">
+        </div>
+        <div class="border-2 border-lime-300 md:visible basis-8/12 text-center content-center">
+            <span class={`${style.companytitle}`}>COMPANY TITLE</span><br/>
+            <span class={`${style.tagline}`}>Sub-Title</span><br/>
+            <span class={`text-[12px]`}>Notice</span><br/>
+        </div>
+        <div class="border-2 border-lime-300 md:visible basis-4/12 md:basis-2/12 text-center justify-around items-center flex">
+            <div class="flex flex-col justify-center">
+                <img src="../assets/images/logo.png" alt="Image" class="h-[50px] md:h-[65px] object-contain m-auto"/>
+                <spna>Role and Name</spna>
+            </div>
+            <button type="button" class="hover:bg-blue-400 p-1 rounded-lg border-slate-300 border-[1px]">Logout</button>
+        </div>
+        
+    </div>
+</body>
+
+</html>
