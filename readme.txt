@@ -43,3 +43,5 @@ Side bar added usibg the state we are changing the sidebar class to make it visi
 A- Adding different mdolues in a separate file and adding the admin module to the admin dashboard.
 B- Adding the functionality to the admin dashboard add user page
 C- Added the adduser dashboard and sending the adduser html file from server.
+D- Added the spinner before fetching from server and handled the server failed response.
+Defined the separate fucntion named fetchfromapi to handle the call of server response,
