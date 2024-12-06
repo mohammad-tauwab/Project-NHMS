@@ -6,8 +6,6 @@ import Sidebar from "./subcomponent/sidebar";
 import BackToTop from "./subcomponent/BackToTop";
 import AddUserDashboard from "./Dashboard/adduserdashboard";
 
-
-
 function AddUser() {
   const navigate = useNavigate();
   //const authUserDetail = useLoaderData(); // getting the data that we have passed to the loader of the router from the previous page

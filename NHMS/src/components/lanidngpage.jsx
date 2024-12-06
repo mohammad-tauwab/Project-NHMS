@@ -15,16 +15,17 @@ function LandingPage() {
     event.preventDefault();
     //getting the details filled in by the user
     let userObj = {
-      name: document.getElementById("username").value,
+      loginid: document.getElementById("username").value,
       pwd: document.getElementById("userpwd").value,
     };
 
     //defining the function that will run when response from the server is received.
-    const fetchedData = ((response,data) =>{
+    const fetchedData = (response, data) => {
       setLoading(false);
-      if(response === 'error'){
-        alert("Server Error Reported: ",data)
-      } else {// response received is a data and not an error.
+      if (response === "error") {
+        alert("Server Error Reported: ", data);
+      } else {
+        // response received is a data and not an error.
         if (Object.keys(data).length != 0) {
           authUserDetails = data;
           callback(data);
@@ -33,17 +34,20 @@ function LandingPage() {
           setValidUser(false);
         }
       }
-      })
-    
+    };
+
     //calling the fetch function with the parameters to fetch from server
-    fetchWithTimeOut("http://localhost:7000/auth", 
+    fetchWithTimeOut(
+      "http://localhost:7000/auth",
       {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userObj),
-      },'JSON', fetchedData)
-      
-  }
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userObj),
+      },
+      "JSON",
+      fetchedData
+    );
+  };
 
   return (
     <>

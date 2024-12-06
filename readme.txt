@@ -45,3 +45,9 @@ B- Adding the functionality to the admin dashboard add user page
 C- Added the adduser dashboard and sending the adduser html file from server.
 D- Added the spinner before fetching from server and handled the server failed response.
 Defined the separate fucntion named fetchfromapi to handle the call of server response,
+
+----------------------------------ADD (3.3)-------------------------------------------------------
+Completed the Add User Module. Here we have applied router-dom File method to retrieve data from the Form in main using Data.request.fromData()
+and getting the entries using Object.formentries(formData).
+We have modified the data according to what we want to store in database by callin the fetch method and encoding the
+data in the body.

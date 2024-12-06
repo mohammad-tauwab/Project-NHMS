@@ -4,15 +4,16 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import App from "./components/App";
 import "./assets/css/tailwindstyle.css";
-import { getAuthUserDetails} from "./components/lanidngpage";
+import { getAuthUserDetails } from "./components/lanidngpage";
 import MainHome from "./components/MainHome";
 import AddUser from "./components/adduser";
+import { getAddUserFormData } from "./controller/getformdata";
 
 const routes = [
   { path: "/", element: <App /> },
   //if user has clickde login then only go to mainPAge
-  { path: "/main", element :<MainHome/>, loader : getAuthUserDetails, },
-  {path: '/admin/adduser', element :<AddUser/>}
+  { path: "/main", element: <MainHome />, loader: getAuthUserDetails },
+  { path: "/admin/adduser", element: <AddUser />, action: getAddUserFormData },
 ];
 
 const router = createBrowserRouter(routes);

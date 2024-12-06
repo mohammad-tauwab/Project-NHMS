@@ -35,12 +35,6 @@ const adminModules = [
     buttonname: "Add User",
   },
   {
-    image: deleteuser,
-    details: "Delete existing users from the system",
-    iconName: MdAutoDelete,
-    buttonname: "Delete User",
-  },
-  {
     image: usermanage,
     details:
       "Manage existing users in the system, change their roles, login ID and Password and more",
