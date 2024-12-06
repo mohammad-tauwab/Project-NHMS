@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
+import fetchWithTimeOut from "../../controller/fetchfromapi";
+
 
 
 function DropDown({
@@ -16,6 +18,17 @@ function DropDown({
         return currentItemList.includes(checkedItem)?currentItemList.filter(items=>{return items!=checkedItem}):[...currentItemList, checkedItem];
       })
     }
+    //*********FOR DEMO PURPOSE */
+    const callbackfunction =()=>console.log('user added successfully');
+    const data = {
+      name : 'User1',
+      loginid : "user1@gmail.com",
+      password : "abcdef",
+      number : "9859954585",
+      employeeid : "52585",
+      roles : ['role1', 'role2', 'role3']
+    }
+    //for demo ************************* END HERE
     
   return (
     <div className="my-2 relative max-h-fit mx-3 w-[80%]">
@@ -34,7 +47,13 @@ function DropDown({
               className="hover:bg-blue-300 border-[1px] border-slate-800 px-3 mb-1 py-[2px] rounded-md cursor-pointer"
               onClick={()=>{
                 document.getElementById(item).checked?document.getElementById(item).checked=false:document.getElementById(item).checked=true;
-                handleCheckBoxChange(item)
+                handleCheckBoxChange(item);
+                //for demo
+                fetchWithTimeOut("http://localhost:7000/adduser", {
+                  method : "POST",
+                  headers : {'Content-Type' : "application/json"},
+                  body : JSON.stringify(data)
+                },JSON, callbackfunction);
               }}
             >
               <input
