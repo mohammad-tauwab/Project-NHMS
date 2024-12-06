@@ -5,6 +5,9 @@ import Header from "./subcomponent/header";
 import Sidebar from "./subcomponent/sidebar";
 import BackToTop from "./subcomponent/BackToTop";
 import AddUserDashboard from "./Dashboard/adduserdashboard";
+import DropDown from "./subcomponent/dropdown";
+import { userRoles } from "../store/userrole";
+
 
 function AddUser() {
   const navigate = useNavigate();
@@ -35,9 +38,10 @@ function AddUser() {
           <Header currentUserDetail={authUserDetail}></Header>
           <div className="flex flex-row">
             <Sidebar></Sidebar>
-            <AddUserDashboard>
+            <DropDown buttonName="Choose Roles" options={userRoles}></DropDown>
+            {/* <AddUserDashboard>
               <BackToTop></BackToTop>
-            </AddUserDashboard>
+            </AddUserDashboard> */}
           </div>
         </div>
       )}
