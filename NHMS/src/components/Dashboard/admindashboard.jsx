@@ -19,7 +19,7 @@ function Admindashboard(props) {
             />
             <hr />
             <p>{module.details}</p>
-            <div className="px-2 py-1 my-2 flex flex-row  items-center border-[1px] border-slate-400 rounded-xl max-w-fit  m-auto hover:bg-blue-400 hover:border-black cursor-pointer">
+            <div className="px-2 py-1 my-2 flex flex-row  items-center border-[1px] border-slate-400 rounded-xl max-w-fit   m-auto hover:bg-blue-400 hover:border-black cursor-pointer flex-wrap">
               <module.iconName />
               <input
                 type="button"
@@ -30,7 +30,6 @@ function Admindashboard(props) {
                     case 'Add User':
                       navigate('/admin/adduser')
                       break;
-                  
                     default:
                       break;
                   }

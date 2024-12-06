@@ -72,14 +72,14 @@ const adminModules = [
     image: billformat,
     details: "Manage billing format of the OPD billing, IPD Billing and more",
     iconName: FcDocument,
-    buttonname: "Manage Billing Format",
+    buttonname: "Billing Format",
   },
   {
     image: dataanalysis,
     details:
       "Manage data analysis of the system, see different reports and analysis for more profitable buisiness, see the fields where more effor is required and more",
     iconName: MdDataExploration,
-    buttonname: "Manage Data Analysis",
+    buttonname: "Data Analysis",
   },
   {
     image: pathology,
