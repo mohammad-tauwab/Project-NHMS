@@ -2,6 +2,8 @@ import deleteuser from "../../assets/images/deleteuser.png";
 import { useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
+import DropDown from "../subcomponent/dropdown";
+
 function ManageUserDashboard({
   users = [
     {
@@ -24,7 +26,7 @@ function ManageUserDashboard({
 }) {
   const [displayrole, setdisplayrole] = useState(false); // to set the role display visible and invisible
   const [activeuser, setactiveuser] = useState(""); //to set the active user name to display the roles
-
+  const [adduser, setadduser] = useState(false); //to set the add user button to the display
   let rolesarray = []; // to store the roles array when the item is rendered
   return (
     <div
@@ -75,7 +77,7 @@ function ManageUserDashboard({
           displayrole ? "visible" : "invisible"
         } flxe felx-col p-3 text-center text-[20px] mb-2 pointer-events-auto`}
       >
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between mb-2">
           <span className="flex ">{activeuser.toUpperCase()}'s Roles</span>
           <span className="flex justify-end">
             <TiDelete
@@ -89,21 +91,43 @@ function ManageUserDashboard({
 
         {rolesarray.map((role, index) => (
           <div
-            className="flex flex-row items-center justify-center p-1 border-[1px] border-slate-400 cursor-pointer hover:bg-blue-400 hover:border-black"
+            className="flex flex-row items-center justify-between px-3 py-1 mr-2 border-[1px] border-slate-400  hover:bg-blue-400 hover:border-black"
             key={role}
-            onClick={() => {
-              const userConfirmed = confirm(
-                "Are you sure you want to delete this item?"
-              );
-              if (userConfirmed) {
-                console.log("item deleted");
-              } else console.log("item not deleted");
-            }}
           >
             <span className="text-center text-[17px] px-3">{role}</span>
-            <MdDelete></MdDelete>
+            <MdDelete
+              className="cursor-pointer text-red-600"
+              onClick={() => {
+                const userConfirmed = confirm(
+                  "Are you sure you want to delete this item?"
+                );
+                if (userConfirmed) {
+                  console.log("item deleted");
+                } else console.log("item not deleted");
+              }}
+            ></MdDelete>
           </div>
         ))}
+
+        <div className="text-center mt-3">
+          {/* for adding the add roles button */}
+          <input
+            type="button"
+            value={` ${adduser ? "Done Selection" : "Add User Roles"}`}
+            className="bg-blue-100 border-[1px] border-slate-400 p-1 px-2 rounded-xl text-[16px] hover:bg-blue-400 hover:border-black cursor-pointer"
+            onClick={() => {
+              setadduser(!adduser);
+            }}
+          />
+          <div
+            className={`text-center h-[40px] text-[16px] mb-5 ${
+              adduser ? "visible" : "hidden"
+            }`}
+          >
+            <DropDown buttonName="Choose Roles"></DropDown>{" "}
+            {/**Now options for this will be passed when different r oles are read from the database and stored in the sessionstorage as an array at the beginning of this page rendering using useEffect */}
+          </div>
+        </div>
       </div>
     </div>
   );
