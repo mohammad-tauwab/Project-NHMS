@@ -4,11 +4,9 @@ import App from "./App";
 import Header from "./subcomponent/header";
 import Sidebar from "./subcomponent/sidebar";
 import BackToTop from "./subcomponent/BackToTop";
-import AddUserDashboard from "./Dashboard/adduserdashboard";
-import DropDown from "./subcomponent/dropdown";
-import { userRoles } from "../store/userrole";
+import ManageUserDashboard from "./Dashboard/manageuserboard";
 
-function AddUser() {
+function ManageUser() {
   const navigate = useNavigate();
   //const authUserDetail = useLoaderData(); // getting the data that we have passed to the loader of the router from the previous page
   let authUserDetail = {};
@@ -39,13 +37,13 @@ function AddUser() {
           <Header currentUserDetail={authUserDetail}></Header>
           <div className="flex flex-row">
             <Sidebar></Sidebar>
-            <AddUserDashboard>
+            <ManageUserDashboard>
               <BackToTop></BackToTop>
-            </AddUserDashboard>
+            </ManageUserDashboard>
           </div>
         </div>
       )}
     </>
   );
 }
-export default AddUser;
+export default ManageUser;

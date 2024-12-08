@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { adminModules } from "../../store/admimodules";
 
@@ -25,10 +24,13 @@ function Admindashboard(props) {
                 type="button"
                 value={module.buttonname}
                 className="px-1 cursor-pointer"
-                onClick={(e)=>{
+                onClick={(e) => {
                   switch (e.target.value) {
-                    case 'Add User':
-                      navigate('/admin/adduser')
+                    case "Add User":
+                      navigate("/admin/adduser");
+                      break;
+                    case "Manage User":
+                      navigate("/admin/manageuser");
                       break;
                     default:
                       break;
