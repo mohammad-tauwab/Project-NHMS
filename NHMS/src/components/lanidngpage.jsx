@@ -21,12 +21,12 @@ function LandingPage() {
     //defining the function that will run when response from the server is received.
     const fetchedData = (response, data) => {
       setLoading(false);
-      console.log(data);
       if (response === "error") {
         alert("Server Error Reported: ", data);
       } else {
         // response received is a data and not an error.
         if (data.length != 0) {
+          //the data receieved from server is an array of two objcets 1. user details and 2. role details
           callback(data); //passing the data to the callback fucntiuon defined in the onsubmit method to store it in the session storage
           naviagte("/main");
         } else {
@@ -112,7 +112,7 @@ function LandingPage() {
                     setLoading(true);
                     checkUserAuth(event, (validUserDetail) => {
                       sessionStorage.setItem(
-                        // check user details from the server and store it in the session storage
+                        // check user details and roles from the server and store it in the session storage
                         "currentUserDetails",
                         JSON.stringify(validUserDetail)
                       );

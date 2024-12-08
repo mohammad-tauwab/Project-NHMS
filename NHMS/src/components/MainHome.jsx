@@ -12,10 +12,11 @@ function MainHome() {
   //const authUserDetail = useLoaderData(); // getting the data that we have passed to the loader of the router from the previous page
   let authUserDetail = {};
   let sessionstoragedata = JSON.parse(
+    // get the value stored in the session storage (array of objects) in landing page and store it.
     sessionStorage.getItem("currentUserDetails")
   );
   sessionstoragedata.length != 0
-    ? (authUserDetail = sessionstoragedata[0])
+    ? (authUserDetail = sessionstoragedata[0]) //1st object in teh array is the user details
     : alert("Please Login!!");
   useEffect(() => {
     const handlePopState = (event) => {
@@ -29,7 +30,7 @@ function MainHome() {
       window.onpopstate = null; // Clean up the event listener
     };
   }, [location]);
-  let roles = sessionstoragedata[1].role.split("-");
+  let roles = sessionstoragedata[1].role.split("-"); //second object in the array is the role details, coverting it to an array so that it can be used in the sidebar as props
   return (
     <>
       {Object.keys(authUserDetail).length == 0 ? (
