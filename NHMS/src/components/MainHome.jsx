@@ -5,15 +5,17 @@ import Header from "./subcomponent/header";
 import Sidebar from "./subcomponent/sidebar";
 import Admindashboard from "./Dashboard/admindashboard";
 import BackToTop from "./subcomponent//BackToTop";
+import GenUserDashBoard from "./Dashboard/genuserdashboard";
 
 function MainHome() {
   const navigate = useNavigate();
   //const authUserDetail = useLoaderData(); // getting the data that we have passed to the loader of the router from the previous page
   let authUserDetail = {};
-  sessionStorage.getItem("currentUserDetails")
-    ? (authUserDetail = JSON.parse(
-        sessionStorage.getItem("currentUserDetails")
-      ))
+  let sessionstoragedata = JSON.parse(
+    sessionStorage.getItem("currentUserDetails")
+  );
+  sessionstoragedata.length != 0
+    ? (authUserDetail = sessionstoragedata[0])
     : alert("Please Login!!");
   useEffect(() => {
     const handlePopState = (event) => {
@@ -27,6 +29,7 @@ function MainHome() {
       window.onpopstate = null; // Clean up the event listener
     };
   }, [location]);
+  let roles = sessionstoragedata[1].role.split("-");
   return (
     <>
       {Object.keys(authUserDetail).length == 0 ? (
@@ -35,10 +38,21 @@ function MainHome() {
         <div className="block">
           <Header currentUserDetail={authUserDetail}></Header>
           <div className="flex flex-row">
-            <Sidebar></Sidebar>
-            <Admindashboard>
-              <BackToTop></BackToTop>
-            </Admindashboard>
+            {authUserDetail.roles == "main admin" ? (
+              <>
+                <Sidebar></Sidebar>
+                <Admindashboard>
+                  <BackToTop></BackToTop>
+                </Admindashboard>
+              </>
+            ) : (
+              <>
+                <Sidebar menuItems={roles}></Sidebar>
+                <GenUserDashBoard>
+                  <BackToTop></BackToTop>
+                </GenUserDashBoard>
+              </>
+            )}
           </div>
         </div>
       )}

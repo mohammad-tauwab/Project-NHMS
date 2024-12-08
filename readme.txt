@@ -52,3 +52,6 @@ Completed the Add User Module. Here we have applied router-dom File method to re
 and getting the entries using Object.formentries(formData).
 We have modified the data according to what we want to store in database by callin the fetch method and encoding the
 data in the body.
+
+----------------------------------ADD(4.1)--------------------------------------------------------
+linking the menu items with the roels of the users

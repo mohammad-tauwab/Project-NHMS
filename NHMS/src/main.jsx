@@ -6,14 +6,14 @@ import App from "./components/App";
 import "./assets/css/tailwindstyle.css";
 import { getAuthUserDetails } from "./components/lanidngpage";
 import MainHome from "./components/MainHome";
-import AddUser from "./components/adduser";
 import { getAddUserFormData } from "./controller/getformdata";
+import AddUser from "./components/AddUser";
 
 const routes = [
   { path: "/", element: <App /> },
   //if user has clickde login then only go to mainPAge
   { path: "/main", element: <MainHome />, loader: getAuthUserDetails },
-  { path: "/admin/adduser", element: <AddUser />, action: getAddUserFormData },
+  { path: "/admin/adduser", element: <AddUser />, action: getAddUserFormData }, // calling getAddUserFormData to get the form data and format it so that it could be strored in the database.
 ];
 
 const router = createBrowserRouter(routes);

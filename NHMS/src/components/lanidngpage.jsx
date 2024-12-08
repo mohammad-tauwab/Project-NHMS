@@ -6,7 +6,6 @@ import { useState } from "react";
 import Spinner from "../components/subcomponent/spinner";
 import fetchWithTimeOut from "../controller/fetchfromapi";
 
-let authUserDetails = {}; // defining an empty obejct to store the relevant data of authenticated user
 function LandingPage() {
   const [validuser, setValidUser] = useState(true); //storing the state to show the error message once the authentication failed.
   const naviagte = useNavigate(); //defining this to diect to the main page when required.
@@ -28,8 +27,7 @@ function LandingPage() {
       } else {
         // response received is a data and not an error.
         if (data.length != 0) {
-          authUserDetails = data[0];
-          callback(data[0]); //passing the data to the callback fucntiuon defined in the onsubmit method to store it in the session storage
+          callback(data); //passing the data to the callback fucntiuon defined in the onsubmit method to store it in the session storage
           naviagte("/main");
         } else {
           setValidUser(false);
@@ -52,7 +50,7 @@ function LandingPage() {
 
   return (
     <>
-      <div className="flex w-full container m-auto bg-white align-middle">
+      <div className="flex w-full container m-auto bg-white align-middle caret-transparent">
         <div className="hidden md:block">
           <Animation></Animation>
         </div>
@@ -113,7 +111,6 @@ function LandingPage() {
                   onClick={(event) => {
                     setLoading(true);
                     checkUserAuth(event, (validUserDetail) => {
-                      console.log(validUserDetail);
                       sessionStorage.setItem(
                         // check user details from the server and store it in the session storage
                         "currentUserDetails",
