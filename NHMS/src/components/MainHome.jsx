@@ -30,7 +30,9 @@ function MainHome() {
       window.onpopstate = null; // Clean up the event listener
     };
   }, [location]);
-  let roles = sessionstoragedata[1].role.split("-"); //second object in the array is the role details, coverting it to an array so that it can be used in the sidebar as props
+  let userroles = [];
+  sessionstoragedata[1].role &&
+    (userroles = sessionstoragedata[1].role.split("-")); //second object in the array is the role details, coverting it to an array so that it can be used in the sidebar as props
   return (
     <>
       {Object.keys(authUserDetail).length == 0 ? (
@@ -39,7 +41,7 @@ function MainHome() {
         <div className="block">
           <Header currentUserDetail={authUserDetail}></Header>
           <div className="flex flex-row">
-            {authUserDetail.roles == "main admin" ? (
+            {authUserDetail.role.toLowerCase() == "main admin" ? (
               <>
                 <Sidebar></Sidebar>
                 <Admindashboard>
@@ -48,7 +50,7 @@ function MainHome() {
               </>
             ) : (
               <>
-                <Sidebar menuItems={roles}></Sidebar>
+                <Sidebar menuItems={userroles}></Sidebar>
                 <GenUserDashBoard>
                   <BackToTop></BackToTop>
                 </GenUserDashBoard>
