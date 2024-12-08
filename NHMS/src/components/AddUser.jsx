@@ -8,7 +8,6 @@ import AddUserDashboard from "./Dashboard/adduserdashboard";
 import DropDown from "./subcomponent/dropdown";
 import { userRoles } from "../store/userrole";
 
-
 function AddUser() {
   const navigate = useNavigate();
   //const authUserDetail = useLoaderData(); // getting the data that we have passed to the loader of the router from the previous page
@@ -38,10 +37,9 @@ function AddUser() {
           <Header currentUserDetail={authUserDetail}></Header>
           <div className="flex flex-row">
             <Sidebar></Sidebar>
-            <DropDown buttonName="Choose Roles" options={userRoles}></DropDown>
-            {/* <AddUserDashboard>
+            <AddUserDashboard>
               <BackToTop></BackToTop>
-            </AddUserDashboard> */}
+            </AddUserDashboard>
           </div>
         </div>
       )}
