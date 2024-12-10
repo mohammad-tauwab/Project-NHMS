@@ -59,7 +59,7 @@ function Sidebar({ menuItems = ["item1", "item2", "item3", "item4"] }) {
         {menuItems.map((items, index) => (
           <input
             type="button"
-            className="content-start text-start p-1 mb-1 mt-1 hover:bg-blue-300 hover:rounded-[5px] hover:border-[1px] hover:border-blue cursor-pointer"
+            className="content-start text-start p-1 mt-1 hover:bg-blue-300 hover:rounded-[5px] hover:border-[1px] hover:border-blue cursor-pointer border-[1px] border-slate-300 bg-slate-100 rounded-md text-[14px]"
             key={index}
             style={index == clickedindex ? active : inactive}
             onClick={(e) => {

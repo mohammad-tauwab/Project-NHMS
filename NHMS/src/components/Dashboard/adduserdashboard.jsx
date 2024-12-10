@@ -15,7 +15,10 @@ function AddUserDashboard() {
           />
           <legend className=" text-xl text-slate-400 leading-6 border-slate-400 text-center text  border-[1px] m-1 p-1 rounded-lg bg-blue-100">
             Add User Details
-            <Form action="" method="post">
+            <Form action="" method="post" onSubmit={(event)=>{
+              const isConfirmed = window.confirm("Do you want to add the user");
+              if(!isConfirmed) event.preventDefault();
+            }}>
               <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 text-center items-center gap-x-3 gap-y-2 m-2 p-2">
                 <span className="text-right text-slate-600 text-lg">
                   Enter User Name :

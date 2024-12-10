@@ -32,7 +32,7 @@ function MainHome() {
   }, [location]);
   let userroles = [];
   sessionstoragedata[1].role &&
-    (userroles = sessionstoragedata[1].role.split("-")); //second object in the array is the role details, coverting it to an array so that it can be used in the sidebar as props
+    (userroles = sessionstoragedata[1].role.split(",")); //second object in the array is the role details, coverting it to an array so that it can be used in the sidebar as props
   return (
     <>
       {Object.keys(authUserDetail).length == 0 ? (

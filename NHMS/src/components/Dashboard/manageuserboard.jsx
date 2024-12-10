@@ -3,31 +3,15 @@ import { useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
 import DropDown from "../subcomponent/dropdown";
+import { userRoles } from "../../store/userrole";
 
-function ManageUserDashboard({
-  users = [
-    {
-      name: "sahil",
-      login: "logn",
-      pwd: "pwd",
-      empid: "555",
-      conatct: "5255",
-      role: "role1-role2-role3-role4-role5-role6-role7",
-    },
-    {
-      name: "sahil",
-      login: "logn",
-      pwd: "pwd",
-      empid: "555",
-      conatct: "5255",
-      role: "role1-role2-role3-role4-role5-role6-role7",
-    },
-  ],
-}) {
+let rolesarray = []; // to store the roles array when the item is rendered
+function ManageUserDashboard({users }) {
+
   const [displayrole, setdisplayrole] = useState(false); // to set the role display visible and invisible
   const [activeuser, setactiveuser] = useState(""); //to set the active user name to display the roles
   const [adduser, setadduser] = useState(false); //to set the add user button to the display
-  let rolesarray = []; // to store the roles array when the item is rendered
+  let [addroles, setAddRoles] = useState([]); //this array will be updated with global user role - current user role
   return (
     <div
       className={`m-1 p-2 bg-slate-200 w-full rounded-tr-lg relative ${
@@ -48,6 +32,7 @@ function ManageUserDashboard({
                   //user name is clicked for dispplaying the roles
                   index == 0 && setdisplayrole(!displayrole);
                   setactiveuser(value); // this will set the state of the class to display the div and dispplay the user name whose role is displayed.
+                  setAddRoles(filterRoles()); //to filter the roles to be passed to the dropdown items and update the state
                 }}
               >
                 {value}
@@ -55,7 +40,7 @@ function ManageUserDashboard({
             ) : (
               <span className="hidden" key={value}>
                 {/**defining this span to store the rolse which is at an index-05 in array so that it can be used in a separate display */}
-                {(rolesarray = value.split("-"))}
+                {(rolesarray = value.split(","))}
               </span>
             )
           )}
@@ -124,7 +109,7 @@ function ManageUserDashboard({
               adduser ? "visible" : "hidden"
             }`}
           >
-            <DropDown buttonName="Choose Roles"></DropDown>{" "}
+            <DropDown buttonName="Choose Roles" options={addroles}></DropDown>
             {/**Now options for this will be passed when different r oles are read from the database and stored in the sessionstorage as an array at the beginning of this page rendering using useEffect */}
           </div>
         </div>
@@ -134,3 +119,13 @@ function ManageUserDashboard({
 }
 
 export default ManageUserDashboard;
+
+function filterRoles (){
+ let addfilterroles = userRoles; // to add the exclusive filter change
+  rolesarray.forEach(role=>{
+    addfilterroles=addfilterroles.filter(element=>{
+      return element != role;
+    })
+  })
+  return addfilterroles;
+}

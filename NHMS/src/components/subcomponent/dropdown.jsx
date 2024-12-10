@@ -43,7 +43,7 @@ function DropDown({
       <div
         className={`p-1 absolute top-[100%] left-[2%] w-[80%] ${
           isOpen ? "visited" : "invisible"
-        }`}
+        } overflow-auto`}
       >
         <ul className="bg-blue-100 ">
           {options.map((item, index) => (
@@ -69,7 +69,7 @@ function DropDown({
         </ul>
       </div>
 
-      <div
+      <div id="slected-roles"
         className={`p-1 absolute top-[100%] left-[2%] w-full text-slate-800 ${
           !isOpen ? "visited" : "invisible"
         }`}
