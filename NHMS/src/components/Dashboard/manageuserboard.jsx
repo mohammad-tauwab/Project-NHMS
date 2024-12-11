@@ -17,6 +17,13 @@ function ManageUserDashboard({ users }) { //users is an array of objects
   const [addroles, setAddRoles] = useState([]); //this array will be updated with global user role - current user role
   const [spinnervisible, setSpinnerVisible] = useState(false);
   let [rolesarray, setRolesArray] = useState(currentroles);
+
+  const getChecekedItem = (item,add)=>{ // we are getting the checked item ,as well as true for checked and false for unchecked.
+    add?setRolesArray([...rolesarray,item]):setRolesArray(rolesarray.filter(element=>{
+      return element!=item; //if add is true add the item (role) else filter that item from the existing item
+    }))
+    setAddRoles(filterRoles(rolesarray));
+  }
   useEffect(() => {
     setShowUsers(users);
     setRolesArray(currentroles);
@@ -73,7 +80,6 @@ function ManageUserDashboard({ users }) { //users is an array of objects
               src={deleteuser}
               alt="Delete User"
               className="object-contain w-[30px] px-1"
-
             />
             Delete User
           </div>
@@ -95,6 +101,17 @@ function ManageUserDashboard({ users }) { //users is an array of objects
               onClick={() => { // when the floating display is closed
                 setdisplayrole(false);
                 setadduser(false);
+                //apart from setting the display store the upadted roles in data base
+                const isconfirm = window.confirm("Making changes in User Roles.Click OK To Proceede");
+                isconfirm && (
+                fetchWithTimeOut("http://localhost:7000/updaterole",{
+                  method : "POST",
+                  headers : {"Content-Type" : "application/JSON"},
+                  body : JSON.stringify({role : rolesarray.join(","), id : activeuser})
+                },"JSON",(response,data)=>{
+                  if(response==='error') console.log(data)
+                    else alert("Modification in roles done successfullly");
+                }))
               }}
             ></TiDelete>
           </span>
@@ -145,7 +162,7 @@ function ManageUserDashboard({ users }) { //users is an array of objects
             className={`text-center h-[40px] text-[16px] mb-9 ${adduser ? "visible" : "hidden"
               }`}
           >
-            <DropDown buttonName="Choose Roles" options={addroles} ></DropDown>
+            <DropDown buttonName="Choose Roles" options={addroles} checkedItem={getChecekedItem} ></DropDown>
             {/**Now options for this will be passed when different r oles are read from the database and stored in the sessionstorage as an array at the beginning of this page rendering using useEffect */}
           </div>
         </div>
@@ -165,3 +182,4 @@ function filterRoles(currentroles) {
   })
   return addfilterroles;
 }
+

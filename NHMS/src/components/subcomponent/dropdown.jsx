@@ -4,6 +4,7 @@ import { IoIosArrowDropdown } from "react-icons/io";
 function DropDown({
   buttonName = "Button Name",
   options = ["item1", "item2", "item3 is long"],
+  checkedItem,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   let [selectedItem, setSelectedItem] = useState([]);
@@ -50,11 +51,12 @@ function DropDown({
             <li
               key={index}
               className="hover:bg-blue-300 border-[1px] text-slate-700 border-slate-800 px-3 mb-1 py-[2px] text-start rounded-md cursor-pointer"
-              onClick={() => {
+              onClick={(e) => {
                 document.getElementById(item).checked
                   ? (document.getElementById(item).checked = false)
                   : (document.getElementById(item).checked = true);
                 handleCheckBoxChange(item);
+                checkedItem(item,document.getElementById(item).checked);
               }}
             >
               <input

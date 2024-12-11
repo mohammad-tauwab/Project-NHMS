@@ -4,6 +4,9 @@ import { userRoles } from "../../store/userrole";
 import { Form } from "react-router-dom";
 
 function AddUserDashboard() {
+  const setCheckedItem = (item, add)=>{
+    //do nothing here
+  }
   return (
     <>
       <div id="container" className="w-full p-3 m-1 rounded-tr-lg bg-slate-200">
@@ -83,6 +86,7 @@ function AddUserDashboard() {
                 <DropDown
                   options={userRoles}
                   buttonName="Choose Roles"
+                  checkedItem={setCheckedItem}
                 ></DropDown>
               </div>
               <input
